@@ -8,8 +8,9 @@ import (
 
 func main(){
 	file, err := os.Create("some.txt")
-	if err := os.Chmod("some.txt", 0444); err != nil {
-		fmt.Println(err)
+
+	if err2 := os.Chmod("some.txt", 0444); err2 != nil {
+		fmt.Println(err2)
 	}
 
 	writer := bufio.NewWriter(file)

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
-	"os"
+	
 	"time"
 )
 
@@ -21,19 +21,16 @@ func main() {
 		b.Write([]byte(fmt.Sprintf("%d. %s %s \n", rn,t, userString)))
 
 	}
-	fileName := "ыещкфпу"
+	fileName := "log2.txt"
 	if err := ioutil.WriteFile(fileName, b.Bytes(), 0666); err != nil {
 		panic(err)
 	}
-	file, err := os.Open(fileName)
+	
+	resultBytes, err := ioutil.ReadFile(fileName)
 	if err != nil {
 		panic(err)
 	}
-	defer file.Close()
-	resultBytes, err := ioutil.ReadAll(file)
-	if err != nil {
-		panic(err)
-	}
+	
 	fmt.Println("Сохраненный лог:")
 	fmt.Println(string(resultBytes))
 
